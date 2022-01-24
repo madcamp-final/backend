@@ -23,6 +23,8 @@ public class ResponseMessage {
     public static final String MODIFIED = "수정되었습니다.";
     public static final String DENIED = "권한이 없습니다.";
     public static final String DELETED = "삭제되었습니다.";
+    public static final String READ_PRODUCT = "작성한 글 조회 성공";
+    public static final String NO_FOUND_PRODUCT = "작성한 글을 찾을 수 없습니다.";
     public static String MODIFIED_POINTS (int value) {
         return "현재 잔여 포인트는 " + value + " 입니다.";
     }

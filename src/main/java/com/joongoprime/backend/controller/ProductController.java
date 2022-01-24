@@ -6,10 +6,9 @@ import com.joongoprime.backend.format.ResponseMessage;
 import com.joongoprime.backend.format.StatusCode;
 import com.joongoprime.backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.criteria.CriteriaBuilder;
 
 @RestController
 @RequestMapping("/product")
@@ -26,6 +25,11 @@ public class ProductController {
     public DefaultResponse createProductInfo(@RequestBody Products products){
         Products created = productService.create(products);
         return DefaultResponse.res(StatusCode.OK, ResponseMessage.CREATED_USER, created);
+    }
+
+    @GetMapping("/load")
+    public DefaultResponse loadProductInfo(@RequestParam Integer pid){
+        return productService.productInfo(pid);
     }
 
 }
