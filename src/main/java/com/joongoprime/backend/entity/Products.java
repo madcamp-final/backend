@@ -26,16 +26,14 @@ public class Products {
 
     private Byte completion;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer des_idea_1;
+
+    private String des_idea_1;
     private String des_detail_1;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer des_idea_2;
+    private String des_idea_2;
     private String des_detail_2;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer des_idea_3;
+    private String des_idea_3;
     private String des_detail_3;
 
     private Integer des_idea_4;
@@ -45,7 +43,7 @@ public class Products {
     private String des_detail_5;
 
     @Builder
-    public Products(Integer pid, Integer price, String product_type, String images_dir, Byte completion, Integer des_idea_1, String des_detail_1, Integer des_idea_2, String des_detail_2, Integer des_idea_3, String des_detail_3, Integer des_idea_4, String des_detail_4, Integer des_idea_5, String des_detail_5){
+    public Products(Integer pid, Integer price, String product_type, String images_dir, Byte completion, String des_idea_1, String des_detail_1, String des_idea_2, String des_detail_2, String des_idea_3, String des_detail_3, Integer des_idea_4, String des_detail_4, Integer des_idea_5, String des_detail_5){
         this.pid = pid;
         this.price = price;
         this.product_type = product_type;

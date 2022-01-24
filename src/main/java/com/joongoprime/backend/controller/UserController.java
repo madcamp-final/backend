@@ -9,6 +9,7 @@ import com.joongoprime.backend.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -28,6 +29,12 @@ public class UserController {
     @GetMapping("/read")
     public DefaultResponse readUserInfo(){
         return userService.userInfo();
+    }
+
+    @CrossOrigin(origins="http://127.0.0.1:5500")
+    @GetMapping("/confirm-payments")
+    public DefaultResponse confirmPayments(@RequestParam String imp_uid) throws JSONException {
+        return userService.confirmPayments(imp_uid);
     }
 
     @GetMapping("/modify-points")
