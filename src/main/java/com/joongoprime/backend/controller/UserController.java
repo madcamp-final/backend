@@ -1,15 +1,13 @@
 package com.joongoprime.backend.controller;
 
 import com.joongoprime.backend.entity.Users;
+import com.joongoprime.backend.entity.form.SignIn;
 import com.joongoprime.backend.format.DefaultResponse;
 import com.joongoprime.backend.format.ResponseMessage;
 import com.joongoprime.backend.format.StatusCode;
 import com.joongoprime.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -34,6 +32,11 @@ public class UserController {
         else {
             return DefaultResponse.res(StatusCode.NOT_FOUND, ResponseMessage.NOT_FOUND_USER);
         }
+    }
+
+    @PostMapping("s/sign-in")
+    public DefaultResponse userSignIn(@RequestBody SignIn userSignInForm) {
+        return userService.userSignIn(userSignInForm);
     }
 
 }
