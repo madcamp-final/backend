@@ -2,6 +2,7 @@ package com.joongoprime.backend.service;
 
 import com.joongoprime.backend.entity.Users;
 import com.joongoprime.backend.entity.UsersRepository;
+import com.joongoprime.backend.entity.form.BuyerInfo;
 import com.joongoprime.backend.entity.form.Forms;
 import com.joongoprime.backend.format.DefaultResponse;
 import com.joongoprime.backend.format.ResponseMessage;
@@ -25,6 +26,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.LinkedHashMap;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
@@ -99,7 +102,7 @@ public class UserService {
         return DefaultResponse.res(StatusCode.OK, ResponseMessage.READ_USER, users.get());
     }
 
-    public DefaultResponse confirmPayments(String imp_uid) {
+    public DefaultResponse confirmPayments(String imp_uid, String uid, Integer value) {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -111,8 +114,29 @@ public class UserService {
         try{
             HttpEntity<JSONObject> entity = new HttpEntity<>(httpBody, httpHeaders);
             ResponseEntity<JSONObject> token = restTemplate.postForEntity("https://api.iamport.kr/users/getToken", entity, JSONObject.class);
-//            return token;
-            return DefaultResponse.res(StatusCode.OK, ResponseMessage.RESULT_FOUND, token);
+            LinkedHashMap<String, String> my = (LinkedHashMap<String, String>) token.getBody().get("response");
+            logger.info(my.get("access_token"));
+            String myToken = my.get("access_token");
+            httpHeaders.clear();
+            httpBody.clear();
+            httpHeaders.add("Authorization", myToken);
+            HttpEntity<JSONObject> reEntity = new HttpEntity<>(httpBody, httpHeaders);
+            BuyerInfo myResponse = restTemplate.postForObject("https://api.iamport.kr/payments/"+imp_uid+"", reEntity, BuyerInfo.class);
+            int amount = (int) myResponse.getResponse().get("amount");
+            if (value == amount){
+                Optional<Users> users = usersRepository.findById(uid);
+                if (!users.isPresent()){
+                    return DefaultResponse.res(StatusCode.NOT_FOUND, ResponseMessage.NOT_FOUND_USER);
+                }
+                Users user = users.get();
+                user.setPoints(value);
+                usersRepository.save(user);
+                return DefaultResponse.res(StatusCode.OK, ResponseMessage.RESULT_FOUND, "결제가 완료되었습니다.");
+            }
+            else {
+                return DefaultResponse.res(StatusCode.BAD_REQUEST, ResponseMessage.DENIED, "결제 정보가 일치하지 않습니다.");
+            }
+
         } catch (Exception e){
             e.printStackTrace();
             return DefaultResponse.res(StatusCode.NOT_FOUND, ResponseMessage.RESULT_NON_FOUND);
