@@ -1,5 +1,7 @@
 package com.joongoprime.backend.entity.form;
 
+import com.joongoprime.backend.entity.Prefer;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
@@ -48,5 +50,11 @@ public class Forms {
     public static class PreferForm {
         private String uid;
         private Integer product_id;
+    }
+
+    public interface PreferListComponentForm {
+        String getUid();
+        Integer getProductId();
+        String getUserName();
     }
 }

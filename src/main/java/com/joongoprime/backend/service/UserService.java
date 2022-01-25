@@ -10,9 +10,9 @@ import com.joongoprime.backend.format.StatusCode;
 import com.joongoprime.backend.jwt.JwtTokenProvider;
 import com.joongoprime.backend.jwt.TokenInfo;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -95,7 +95,7 @@ public class UserService {
         if (authentication.getName().equals("anonymousUser")){
             return DefaultResponse.res(StatusCode.NEED_REFRESH, ResponseMessage.REQUIRES_TOKEN_UPDATE);
         }
-        Optional users = usersRepository.findById(authentication.getName());
+        Optional<Users> users = usersRepository.findById(authentication.getName());
         if (!users.isPresent()) {
             return DefaultResponse.res(StatusCode.NOT_FOUND, ResponseMessage.NOT_FOUND_USER);
         }

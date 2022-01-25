@@ -5,10 +5,7 @@ import com.joongoprime.backend.format.DefaultResponse;
 import com.joongoprime.backend.service.TransactionService;
 import com.joongoprime.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/transaction")
@@ -26,5 +23,14 @@ public class TransactionController {
         return transactionService.preferProduct(preferForm.getUid(), preferForm.getProduct_id());
     }
 
+    @GetMapping("/prefer-list")
+    public DefaultResponse getPreferList(@RequestParam("pid") Integer pid) {
+        return transactionService.getPreferList(pid);
+    }
+
+    @PostMapping("/start-trade")
+    public DefaultResponse startTrade(@RequestBody Forms.PreferForm preferForm){
+        return transactionService.startTrade(preferForm);
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.joongoprime.backend.service;
 
+import com.joongoprime.backend.entity.PreferRepository;
 import com.joongoprime.backend.entity.Products;
 import com.joongoprime.backend.entity.ProductsRepository;
 import com.joongoprime.backend.entity.form.Forms;
