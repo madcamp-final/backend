@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins="*")
 @RequestMapping("/user")
 public class UserController {
 
@@ -31,7 +32,6 @@ public class UserController {
         return userService.userInfo();
     }
 
-    @CrossOrigin(origins="http://127.0.0.1:5500")
     @GetMapping("/confirm-payments")
     public DefaultResponse confirmPayments(@RequestParam String imp_uid, @RequestParam String uid, @RequestParam Integer value) {
         return userService.confirmPayments(imp_uid, uid, value);

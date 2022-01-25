@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.criteria.CriteriaBuilder;
 
 @RestController
+@CrossOrigin(origins="*")
 @RequestMapping("/product")
 public class ProductController {
 
