@@ -38,5 +38,10 @@ public class ProductController {
         return productService.productShow();
     }
 
+    @GetMapping("/myList")
+    public DefaultResponse myProductList(){
+        return productService.myProductList();
+    }
+
 
 }

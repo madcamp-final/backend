@@ -18,6 +18,8 @@ public class Products {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer pid;
 
+    private String uid;
+
     private Integer price;
 
     private String product_type;
@@ -43,8 +45,9 @@ public class Products {
     private String des_detail_5;
 
     @Builder
-    public Products(Integer pid, Integer price, String product_type, String images_dir, Byte completion, String des_idea_1, String des_detail_1, String des_idea_2, String des_detail_2, String des_idea_3, String des_detail_3, Integer des_idea_4, String des_detail_4, Integer des_idea_5, String des_detail_5){
+    public Products(Integer pid, String uid, Integer price, String product_type, String images_dir, Byte completion, String des_idea_1, String des_detail_1, String des_idea_2, String des_detail_2, String des_idea_3, String des_detail_3, Integer des_idea_4, String des_detail_4, Integer des_idea_5, String des_detail_5){
         this.pid = pid;
+        this.uid = uid;
         this.price = price;
         this.product_type = product_type;
         this.images_dir = images_dir;
