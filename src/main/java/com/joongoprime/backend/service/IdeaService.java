@@ -25,7 +25,7 @@ public class IdeaService {
     }
 
     public DefaultResponse loadType(String category){
-        List<String> ideaType = ideaRepository.getTypeFromCategory(category);
+        List<Idea> ideaType = ideaRepository.getIdeaFromCategory(category);
         if(ideaType.size() == 0){
             return DefaultResponse.res(StatusCode.NOT_FOUND, ResponseMessage.LOAD_IDEA_TYPE_FAILED);
         }

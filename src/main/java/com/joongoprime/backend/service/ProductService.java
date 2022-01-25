@@ -49,7 +49,7 @@ public class ProductService {
         if(products.isEmpty()){
             return DefaultResponse.res(StatusCode.NOT_FOUND, ResponseMessage.NOT_FOUND_PRODUCT_ALL);
         }
-        return DefaultResponse.res(StatusCode.OK, ResponseMessage.READ_PRODUCT_ALL, products.getClass());
+        return DefaultResponse.res(StatusCode.OK, ResponseMessage.READ_PRODUCT_ALL, products);
     }
 
 }
