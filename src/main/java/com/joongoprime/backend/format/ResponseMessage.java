@@ -24,7 +24,6 @@ public class ResponseMessage {
     public static final String DENIED = "권한이 없습니다.";
     public static final String DELETED = "삭제되었습니다.";
     public static final String READ_PRODUCT = "작성한 글 조회 성공";
-    public static final String NOT_FOUND_PRODUCT = "작성한 글을 찾을 수 없습니다.";
     public static final String READ_PRODUCT_ALL = "판매품 조회 성공";
     public static final String NOT_FOUND_PRODUCT_ALL = "판매품을 찾을 수 없습니다.";
     public static final String REQUESTED = "거래 요청 성공";
@@ -34,6 +33,11 @@ public class ResponseMessage {
     public static final String IDEA_CATEGORY_SUCCESS = "idea 카테고리 등록 성공";
     public static final String LOAD_IDEA_TYPE_FAILED = "idea 내 존재하지 않는 카테고리입니다.";
     public static final String LOAD_IDEA_TYPE_SUCCESS = "idea type 조회 성공";
+    public static final String NOT_FOUND_PRODUCT = "물품 조회 실패";
+    public static final String TRADE_REGISTERED = "거래 요청 성공";
+    public static final String TRADE_ALREADY_EXISTS = "이미 존재하는 거래입니다.";
+    public static final String TRADE_NOT_FOUND = "존재하지 않는 거래입니다.";
+    public static final String ACCEPT_DONE = "요청이 승인되었습니다.";
     public static String MODIFIED_POINTS (int value) {
         return "현재 잔여 포인트는 " + value + " 입니다.";
     }
