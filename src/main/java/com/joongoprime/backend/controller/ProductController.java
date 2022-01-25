@@ -21,18 +21,18 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @PostMapping("/create-product")
+    @PostMapping("/create")
     public DefaultResponse createProductInfo(@RequestBody Products products){
         Products created = productService.create(products);
         return DefaultResponse.res(StatusCode.OK, ResponseMessage.CREATED_USER, created);
     }
 
-    @GetMapping("/confirm-product")
+    @GetMapping("/confirm")
     public DefaultResponse confirmProductInfo(@RequestParam Integer pid){
         return productService.productInfo(pid);
     }
 
-    @GetMapping("/load-products")
+    @GetMapping("/load")
     public DefaultResponse loadProductInfo(){
         return productService.productShow();
     }
