@@ -33,4 +33,8 @@ public class TransactionController {
         return transactionService.startTrade(preferForm);
     }
 
+    @GetMapping("/accept")
+    public DefaultResponse acceptTrade(@RequestParam("tid") Integer tid){
+        return transactionService.acceptTrade(tid);
+    }
 }

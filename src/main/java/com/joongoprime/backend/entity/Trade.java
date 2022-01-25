@@ -26,14 +26,14 @@ public class Trade {
 
     private Integer bill;
 
-    private Byte completion;
+    private Integer completion;
 
-    private Byte buyer_confirm;
+    private Integer buyer_confirm;
 
-    private Byte seller_confirm;
+    private Integer seller_confirm;
 
     @Builder
-    public Trade (Integer id, String buyer, String seller, Integer product_id, Integer bill, Byte completion, Byte buyer_confirm, Byte seller_confirm){
+    public Trade (Integer id, String buyer, String seller, Integer product_id, Integer bill, Integer completion, Integer buyer_confirm, Integer seller_confirm){
         this.id = id;
         this.buyer = buyer;
         this.seller = seller;
@@ -42,5 +42,20 @@ public class Trade {
         this.completion = completion;
         this.buyer_confirm = buyer_confirm;
         this.seller_confirm = seller_confirm;
+    }
+
+    public int setSeller_confirm(int confirmation){
+        this.seller_confirm = confirmation;
+        return this.seller_confirm;
+    }
+
+    public int setBuyer_confirm(int confirmation){
+        this.buyer_confirm = confirmation;
+        return this.buyer_confirm;
+    }
+
+    public int setCompletion (int completion){
+        this.completion = completion;
+        return this.completion;
     }
 }
