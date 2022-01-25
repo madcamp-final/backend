@@ -121,6 +121,14 @@ public class TransactionService {
                 trade.setCompletion(1);
             }
         }
+        if (trade.getCompletion() == 1){
+            Optional<Users> users1 = usersRepository.findById(trade.getSeller());
+            if (users1.isPresent()){
+                Users user = users1.get();
+                user.setPoints(trade.getBill());
+                usersRepository.save(user);
+            }
+        }
         tradeRepository.save(trade);
         return DefaultResponse.res(StatusCode.OK, ResponseMessage.ACCEPT_DONE, trade);
     }
