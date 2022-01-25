@@ -27,6 +27,9 @@ public class ResponseMessage {
     public static final String NOT_FOUND_PRODUCT = "작성한 글을 찾을 수 없습니다.";
     public static final String READ_PRODUCT_ALL = "판매품 조회 성공";
     public static final String NOT_FOUND_PRODUCT_ALL = "판매품을 찾을 수 없습니다.";
+    public static final String REQUESTED = "거래 요청 성공";
+    public static final String REQUEST_FAILED = "거래 요청 실패";
+    public static final String ALREADY_REQUESTED = "이미 요청된 거래입니다.";
     public static String MODIFIED_POINTS (int value) {
         return "현재 잔여 포인트는 " + value + " 입니다.";
     }

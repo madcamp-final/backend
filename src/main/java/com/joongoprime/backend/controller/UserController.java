@@ -31,11 +31,11 @@ public class UserController {
         return userService.userInfo();
     }
 
-//    @CrossOrigin(origins="http://127.0.0.1:5500")
-//    @GetMapping("/confirm-payments")
-//    public DefaultResponse confirmPayments(@RequestParam String imp_uid) throws JSONException {
-//        return userService.confirmPayments(imp_uid);
-//    }
+    @CrossOrigin(origins="http://127.0.0.1:5500")
+    @GetMapping("/confirm-payments")
+    public DefaultResponse confirmPayments(@RequestParam String imp_uid, @RequestParam String uid, @RequestParam Integer value) {
+        return userService.confirmPayments(imp_uid, uid, value);
+    }
 
     @GetMapping("/modify-points")
     public DefaultResponse modifyPoints(@RequestParam String uid, @RequestParam Integer value){

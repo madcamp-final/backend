@@ -42,4 +42,11 @@ public class Forms {
             return new UsernamePasswordAuthenticationToken(email, password);
         }
     }
+
+    @Getter
+    @Setter
+    public static class PreferForm {
+        private String uid;
+        private Integer product_id;
+    }
 }
