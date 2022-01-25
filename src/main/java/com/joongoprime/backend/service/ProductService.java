@@ -46,7 +46,6 @@ public class ProductService {
 
     public DefaultResponse productShow(){
         List<Products> products = load();
-//        List<Products> products = productsRepository.findAll();
         if(products.isEmpty()){
             return DefaultResponse.res(StatusCode.NOT_FOUND, ResponseMessage.NOT_FOUND_PRODUCT_ALL);
         }
