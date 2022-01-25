@@ -23,6 +23,9 @@ public class ResponseMessage {
     public static final String MODIFIED = "수정되었습니다.";
     public static final String DENIED = "권한이 없습니다.";
     public static final String DELETED = "삭제되었습니다.";
+    public static final String REQUESTED = "거래 요청 성공";
+    public static final String REQUEST_FAILED = "거래 요청 실패";
+    public static final String ALREADY_REQUESTED = "이미 요청된 거래입니다.";
     public static String MODIFIED_POINTS (int value) {
         return "현재 잔여 포인트는 " + value + " 입니다.";
     }
